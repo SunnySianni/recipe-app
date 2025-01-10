@@ -67,6 +67,7 @@ router.put('/:id', async (req, res) => {
     const recipe = await Recipe.findByPk(req.params.id);
     if (recipe) {
       const { title, ingredients, instructions } = req.body;
+      // Ensure that you're updating with the correct fields
       await recipe.update({ title, ingredients, instructions });
       res.redirect(`/recipe/${recipe.id}`);
     } else {
@@ -77,6 +78,7 @@ router.put('/:id', async (req, res) => {
     res.status(400).send(err.message);
   }
 });
+
 
 // Delete a recipe
 router.post('/:id/delete', async (req, res) => {
