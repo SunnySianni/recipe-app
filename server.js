@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Routes
-app.use('/recipes', recipeRoutes);
+app.use('/recipe', recipeRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -42,5 +42,5 @@ sequelize.sync()
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server listening at http://localhost:${PORT}`);
 });
