@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
     const recipes = await Recipe.findAll();
     res.render('index', { recipes });
   } catch (err) {
+    console.error("Error fetching recipes:", err);
     res.status(500).send(err.message);
   }
 });
@@ -21,9 +22,11 @@ router.get('/new', (req, res) => {
 // Create a new recipe
 router.post('/', async (req, res) => {
   try {
-    await Recipe.create(req.body);
-    res.redirect('/recipes');
+    const { title, ingredients, instructions } = req.body;
+    const newRecipe = await Recipe.create({ title, ingredients, instructions });
+    res.redirect(`/recipe/${newRecipe.id}`);
   } catch (err) {
+    console.error("Error creating recipe:", err);
     res.status(400).send(err.message);
   }
 });
@@ -38,6 +41,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).send('Recipe not found');
     }
   } catch (err) {
+    console.error("Error fetching recipe:", err);
     res.status(500).send(err.message);
   }
 });
@@ -52,21 +56,24 @@ router.get('/:id/edit', async (req, res) => {
       res.status(404).send('Recipe not found');
     }
   } catch (err) {
+    console.error("Error fetching recipe for editing:", err);
     res.status(500).send(err.message);
   }
 });
 
-// Update a recipe
-router.post('/:id', async (req, res) => {
+// Update after editing a recipe
+router.put('/:id', async (req, res) => {
   try {
     const recipe = await Recipe.findByPk(req.params.id);
     if (recipe) {
-      await recipe.update(req.body);
-      res.redirect(`/recipes/${recipe.id}`);
+      const { title, ingredients, instructions } = req.body;
+      await recipe.update({ title, ingredients, instructions });
+      res.redirect(`/recipe/${recipe.id}`);
     } else {
       res.status(404).send('Recipe not found');
     }
   } catch (err) {
+    console.error("Error updating recipe:", err);
     res.status(400).send(err.message);
   }
 });
@@ -77,11 +84,12 @@ router.post('/:id/delete', async (req, res) => {
     const recipe = await Recipe.findByPk(req.params.id);
     if (recipe) {
       await recipe.destroy();
-      res.redirect('/recipes');
+      res.redirect('/recipe');
     } else {
       res.status(404).send('Recipe not found');
     }
   } catch (err) {
+    console.error("Error deleting recipe:", err);
     res.status(500).send(err.message);
   }
 });

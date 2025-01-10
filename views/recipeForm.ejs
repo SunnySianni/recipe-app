@@ -1,6 +1,7 @@
 <%- include('partials/header') %>
 <h2><%= recipe ? 'Edit Recipe' : 'Create New Recipe' %></h2>
-<form action="<%= recipe ? `/recipes/${recipe.id}` : '/recipes' %>" method="POST">
+<form action="<%= recipe ? `/recipe/${recipe.id}` : '/recipe' %>" method="POST">
+
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" value="<%= recipe ? recipe.title : '' %>" required>
     
@@ -13,3 +14,5 @@
     <button type="submit"><%= recipe ? 'Update' : 'Create' %> Recipe</button>
 </form>
 <%- include('partials/footer') %>
+
+

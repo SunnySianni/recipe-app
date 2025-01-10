@@ -1,47 +1,180 @@
+/* General body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4; /* Light background for better contrast */
+    color: #333; /* Dark text for readability */
 }
 
+/* Header styling */
 header {
     background-color: #0fe3eb;
-    color: #b41e69;
+    color: #fff;
     text-align: center;
-    padding: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+/* Navigation styling */
 nav a {
-    color: #da2b82;
+    color: #fff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
+    font-size: 1.1rem;
 }
 
+nav a:hover {
+    color: #b41e69; /* Hover effect on links */
+}
+
+/* Main content */
 main {
-    padding: 20px;
+    padding: 30px;
+    max-width: 1100px;
+    margin: 20px auto;
+    background-color: #fff; /* White background for content */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    border-radius: 8px; /* Rounded corners */
 }
 
+/* Form styling */
 form {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
+    background-color: #f9f9f9; /* Lighter form background */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
 }
 
 input, textarea {
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc; /* Subtle borders for inputs */
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
+input:focus, textarea:focus {
+    border-color: #0fe3eb; /* Focus effect */
+    outline: none;
+}
+
+/* Button styling */
 button {
-    background-color: #333;
+    background-color: #b41e69;
     color: #fff;
+    padding: 12px 20px;
     border: none;
-    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #9b1551; /* Darker hover effect */
+}
+
+/* Recipe details page styling */
+.recipe-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #444;
+}
+
+.ingredients, .instructions {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Recipe actions */
+.recipe-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #0fe3eb;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background-color: #b41e69; /* Hover effect */
+}
+
+.delete-btn {
+    background-color: #e63946; /* Red background for delete */
+}
+
+.delete-btn:hover {
+    background-color: #c12f3c; /* Darker red on hover */
+}
+
+/* Back link styling */
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.back-link:hover {
+    color: #0fe3eb; /* Hover effect for back link */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .recipe-container, form {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .recipe-title {
+        font-size: 2rem;
+    }
+
+    .recipe-actions a, .recipe-actions button {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+
+    nav a {
+        font-size: 1rem;
+        margin: 0 10px;
+    }
 }
