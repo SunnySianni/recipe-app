@@ -1,0 +1,29 @@
+import Recipe from './models/recipe.js';
+
+async function addSampleData() {
+  try {
+    await Recipe.create({
+      title: 'Spaghetti Carbonara',
+      ingredients: 'Spaghetti, eggs, pancetta, Parmesan, black pepper',
+      instructions: 'Boil pasta. Fry pancetta. Mix eggs and cheese, then combine with pasta and pancetta.',
+    });
+    
+    await Recipe.create({
+      title: 'Chocolate Chip Cookies',
+      ingredients: 'Flour, sugar, butter, chocolate chips, eggs, vanilla extract',
+      instructions: 'Mix ingredients. Bake at 350°F for 10 minutes.',
+    });
+    
+    await Recipe.create({
+      title: 'Caesar Salad',
+      ingredients: 'Lettuce, croutons, Caesar dressing, Parmesan',
+      instructions: 'Toss lettuce and croutons with dressing, then sprinkle with Parmesan.',
+    });
+
+    console.log('Sample data added!');
+  } catch (err) {
+    console.error('Error inserting sample data:', err);
+  }
+}
+
+addSampleData();

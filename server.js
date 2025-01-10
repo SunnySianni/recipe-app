@@ -11,9 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = process.env.PORT || 3007;
-
-
+const PORT = process.env.PORT || 3008;
 
 // Middleware
 app.use(express.json());
@@ -30,16 +28,19 @@ app.use('/recipes', recipeRoutes);
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send('Something went wrong!');
 });
 
-// Test database connectivity
-sequelize.sync().then(() => {
-  console.log('Database connected');
-}).catch((err) => {
-  console.error('Unable to connect to the database:', err);
-});
+// Test database connectivity and synchronization
+sequelize.sync()
+  .then(() => {
+    console.log('Database connected and synchronized');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
