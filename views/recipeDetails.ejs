@@ -5,7 +5,13 @@
 <h3>Instructions:</h3>
 <p><%= recipe.instructions %></p>
 <a href="/recipes/<%= recipe.id %>/edit">Edit</a>
-<form action="/recipes/<%= recipe.id %>/delete" method="POST">
+
+<!-- Delete confirmation added -->
+<form action="/recipes/<%= recipe.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
     <button type="submit">Delete</button>
 </form>
+
+<!-- Back to all recipes link -->
+<a href="/recipes">Back to all recipes</a>
+
 <%- include('partials/footer') %>
